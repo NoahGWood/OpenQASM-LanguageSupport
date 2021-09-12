@@ -1,0 +1,255 @@
+{
+	"$schema": "https://raw.githubusercontent.com/martinring/tmlanguage/master/tmlanguage.json",
+	"name": "OpenQASM",
+	"patterns": [
+        {
+            "include": "#statements"
+        }
+	],
+	"repository": {
+        "statements":{
+            "patterns": [
+                {
+                    "include": "#operators"
+                },
+                {
+                    "include": "#keywords"
+                },
+                {
+                    "include": "#declarations"
+                },
+                {
+                    "include": "#control-statements"
+                },
+                {
+                    "include": "#expression"
+                },
+                {
+                    "include": "#types"
+                },
+                {
+                    "include": "#comment"
+                }
+            ]
+        },
+        "declarations": {
+            "patterns": [
+                {
+                    "include": "#gate-declaration"
+                },
+                {
+                    "include": "#function-declaration"
+                },
+                {
+                    "include": "#creg-declaration"
+                },
+                {
+                    "include": "#qreg-declaration"
+                },
+                {
+                    "include": "#variable-declaration"
+                }
+            ]
+        },
+        "assignment":{},
+        "arguments":{},
+        "types":{
+            "patterns": [
+                {
+                    "include": "#booleans"
+                },
+                {
+                    "include": "#strings"
+                },
+                {
+                    "include": "#numbers"
+                },
+                {
+                    "include": "#qubit"
+                },
+                {
+                    "include": "#bit"
+                }
+            ]
+        },
+        "operators": {
+            "patterns": [
+                {
+                    "name": "keyword.operator.isEqual.qasm",
+                    "match": "\\b(==)\\b"
+                }
+            ]
+        },
+        "expressions":{},
+        "keywords":{
+            "patterns": [
+                {
+                    "name": "constant.language.openqasm.qasm",
+                    "match": "\\b(OPENQASM|openqasm)\\b"
+                },
+                {
+                    "name": "constant.language.include.qasm",
+                    "match": "\\b(include)\\b"
+                },
+                {
+                    "name": "constant.language.const.qasm",
+                    "match": "\\b(const)\\b"
+                },
+                {
+                    "name": "constant.language.extern.qasm",
+                    "match": "\\b(extern)\\b"
+                },
+                {
+                    "name": "constant.language.uint.qasm",
+                    "match": "\\b(uint)\\b"
+                }
+            ]
+        },
+		"builtins":{},
+	
+		"control-statements": {
+			"patterns": [
+                {
+                    "include": "#for-loop"
+                },
+                {
+                    "name": "keyword.condition.qasm",
+                    "match": "\\b(for|in|while)\\b"
+                },
+                {
+                    "name": "keyword.control.end.qasm",
+                    "match": "\\b(end)\\b"
+                },
+                {
+                    "name": "keyword.control.return.qasm",
+                    "match": "\\b(return)\\b"
+                },
+                {
+                    "name": "keyword.control.directive.qasm",
+                    "match": "\\b(break|continue|if|else)\\b"
+                },
+                {
+                    "name": "keyword.control.reset.qasm",
+                    "match": "\\b(reset)\\b"
+                },
+                {
+                    "name": "keyword.control.measure.qasm",
+                    "match": "\\b(measure)\\b"
+                }
+            ]
+        },
+        "for-loop":{
+            "patterns": [
+                {
+                    "match": "(for)(.*)(in)(.*)(\\{)",
+                    "captures":{
+                        "1": {
+                            "name": "keyword.control.for.qasm"
+                        },
+                        "2": {
+                            "name": "variable.other.loopiter.qasm"
+                        },
+                        "3": {
+                            "name": "keyword.control.in.qasm"
+                        },
+                        "4":{
+                            "name": "markup.italic.iterable.qasm"
+                        }
+                    }
+                }
+            ]
+        },
+        "function-declaration":{
+            "name": "constant.language.def.qasm",
+            "match": "\\b(def)\\b"
+        },
+        "gate-declaration":{
+            "name": "constant.language.gate.qasm",
+            "match": "\\b(gate)\\b"
+        },
+        "creg-declaration":{
+            "name": "constant.language.creg.qasm",
+            "match": "\\b(creg)\\b"
+        },
+        "qreg-declaration":{
+            "name": "constant.language.qreg.qasm",
+            "match": "\\b(qreg)\\b"
+        },
+        "variable-declaration":{
+            "patterns": [
+                {
+                    "match": "([a-zA-Z0-9]*|[a-zA-Z0-9]* )(^|[^=])(=|-=|\\+=)($|[^=])([a-zA-Z0-9]*| [a-zA-Z0-9]*)",
+                    "captures": {
+                        "1": {
+                            "name": "variable.name.qasm"
+                        },
+                        "3": {
+                            "name": "keyword.operator.assignEqual.qasm"
+                        },
+                        "5": {
+                            "name": "markup.italic.value.qasm"
+                        }
+                    }
+                }
+            ]
+        },
+        "comment":{
+            "patterns": [
+                {
+                    "name": "comment.line.double-slash.qasm",
+                    "begin": "\\/\\/",
+                    "end": "\n"
+                },
+                {
+					"name": "comment.block.documentation.qasm",
+                    "begin": "/\\*",
+                    "end": "\\*/"
+                }
+            ]
+        },
+		"strings": {
+			"name": "string.quoted.double.qasm",
+			"begin": "\"",
+			"end": "\"",
+			"patterns": [
+				{
+					"name": "constant.character.escape.qasm",
+					"match": "\\\\."
+				}
+			]
+		},
+        "numbers": {
+			"patterns": [
+				{
+					"name": "support.type.property-name.numeric.qasm",
+					"match": "\\b([0-9]+|[0-9].[0-9]+)\\b"
+				}
+			]
+		},
+        "booleans":{
+			"patterns": [
+				{
+					"name": "support.type.property-name.bool.qasm",
+                    "match": "\\b(true|false)\\b"
+                }
+			]
+		},
+        "qubit":{
+            "patterns": [
+                {
+                    "name": "support.type.property-name.qubit.qasm",
+                    "match": "\\b(qubit)\\b"
+                }
+            ]
+        },
+        "bit":{
+            "patterns": [
+                {
+                    "name": "support.type.property-name.bit.qasm",
+                    "match": "\\b(bit)\\b"
+                }
+            ]
+        }
+	},
+	"scopeName": "source.qasm"
+}

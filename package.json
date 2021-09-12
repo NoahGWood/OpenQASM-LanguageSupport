@@ -1,0 +1,44 @@
+{
+    "name": "openqasm-language-support",
+    "displayName": "openqasm",
+    "description": "OpenQASM Language Support for VSCode",
+    "version": "0.0.1",
+    "author":
+    {
+        "name": "Noah G. Wood",
+        "email": "noah@spookymanufacturing.com",
+        "url": "https://github.com/NoahGWood"
+    },
+    "funding": "https://github.com/NoahGWood",
+    "engines": {
+        "vscode": "^1.60.0"
+    },
+    "categories": [
+        "Programming Languages"
+    ],
+    "keywords": [
+        "VSCode",
+        "Eclipse",
+        "Theia",
+        "Extensions",
+        "OpenQASM",
+        "Quantum",
+        "Quantum IDE"
+    ],
+    "contributes": {
+        "languages": [{
+            "id": "qasm",
+            "aliases": ["OpenQASM", "qasm"],
+            "extensions": [".qasm",".inc"],
+            "configuration": "./language-configuration.json"
+        }],
+        "grammars": [{
+            "language": "qasm",
+            "scopeName": "source.qasm",
+            "path": "./syntaxes/qasm.tmLanguage.json"
+        }]
+    },
+    "homepage": "https://github.com/NoahGWood/OpenQASM-LanguageSupport",
+    "bugs": "https://github.com/NoahGWood/OpenQASM-LanguageSupport/issues",
+    "license": "GPL-3.0"
+}
