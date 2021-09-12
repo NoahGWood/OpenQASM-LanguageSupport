@@ -16,19 +16,22 @@
                     "include": "#keywords"
                 },
                 {
-                    "include": "#declarations"
+                    "include": "#control-statements"
                 },
                 {
-                    "include": "#control-statements"
+                    "include": "#constants"
                 },
                 {
                     "include": "#expression"
                 },
                 {
-                    "include": "#types"
+                    "include": "#comment"
                 },
                 {
-                    "include": "#comment"
+                    "include": "#declarations"
+                },
+                {
+                    "include": "#types"
                 }
             ]
         },
@@ -51,8 +54,6 @@
                 }
             ]
         },
-        "assignment":{},
-        "arguments":{},
         "types":{
             "patterns": [
                 {
@@ -75,8 +76,52 @@
         "operators": {
             "patterns": [
                 {
-                    "name": "keyword.operator.isEqual.qasm",
+                    "name": "keyword.operator.new.isEqual.qasm",
                     "match": "\\b(==)\\b"
+                },
+                {
+                    "name": "keyword.operator.plus.qasm",
+                    "match": "\\b(\\+)\\b"
+                },
+                {
+                    "name": "keyword.operator.new.assignTo.qasm",
+                    "match": "\\b(->)\\b"
+                },
+                {
+                    "name": "keyword.operator.mul.qasm",
+                    "match": "\\b(\\*)\\b"
+                },
+                {
+                    "name": "keyword.operator.div.qasm",
+                    "match": "\\b(/)\\b"
+                },
+                {
+                    "name": "keyword.operator.minus.qasm",
+                    "match": "\\b(\\-)\\b"
+                }
+            ]
+        },
+        "constants": {
+            "patterns": [
+                {
+                    "name": "constant.language.pi.qasm",
+                    "match": "\\b(pi)\\b"
+                },
+                {
+                    "name": "constant.language.theta.qasm",
+                    "match": "\\b(theta)\\b"
+                },
+                {
+                    "name": "constant.language.phi.qasm",
+                    "match": "\\b(phi)\\b"
+                },
+                {
+                    "name": "constant.language.psi.qasm",
+                    "match": "\\b(psi)\\b"
+                },
+                {
+                    "name": "constant.language.lamba.qasm",
+                    "mach": "\\b(lambda)\\b"
                 }
             ]
         },
@@ -102,6 +147,10 @@
                 {
                     "name": "constant.language.uint.qasm",
                     "match": "\\b(uint)\\b"
+                },
+                {
+                    "name": "constant.language.int.qasm",
+                    "match": "\\b(int)\\b"
                 }
             ]
         },
